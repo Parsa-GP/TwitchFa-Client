@@ -618,7 +618,7 @@ body {
     #chat-container {
         clear: unset;
         position: relative;
-        z-index: 3;
+        z-index: 2;
         width: var(--chat-width);
         top: 0;
         font-size: small;
