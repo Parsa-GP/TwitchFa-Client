@@ -4,17 +4,17 @@
 A bridge for Iranians who are restricted to access `twitch.tv`.
 a COMPLETE frontend webapp (kinda)
 
-- The stream player is for android browser (tested in android 12, idk if it works on lower version of androids) howewer, the chat completely support all browsers.
-- The only data that is collected are emotes that do not have an image, which can be seen by typing the code `getCookie("noemotes")`.
+- The streaming player is for the Android browser (tested on Android 10 to 12, idk if it works on a lower version of Android) However, the chat completely supports all browsers.
+- The only data that is collected is a emote list that does not have an image, which can be seen by typing the code `getCookie("noemotes")`.
 
 ## TODO List
-1. Get app working perfectly fine in desktop (see stream in desktop)
+1. Get the app working perfectly fine on the desktop (see the stream on the desktop)
 2. Adding sub-gifter badge[.](https://www.google.com/search?q=sub+gifter+twitch+badge&tbm=isch#imgrc=bWzoPFdZVHiHcM)
 3. Add more emote like [BTTV](https://api.betterttv.net/3/cached/users/twitch/ID) or [FFZ](https://api.frankerfacez.com/v1/room/id/ID).
 
 ## Built with
-* JavaScript
-* tmi.js
+* [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
+* [tmi.js](https://tmijs.com/)
 
 ## Screenshots
 <img src="img/showcase1.png" alt="Showcase #1" style="max-height:300px;">
