@@ -390,7 +390,7 @@ body {
     padding: 10px;
     display: flex;
     align-items: center;
-    box-shadow: 0 10px 10px #191919;
+    box-shadow: 0 5px 10px #191919c4;
     position: fixed;
     top: 80px;
     transition-duration: var(--transition-duration);
@@ -537,6 +537,7 @@ body {
     );
     outline: none;
     -webkit-appearance: none;
+    appearance: none;
     padding: 5px;
 }
 
@@ -626,18 +627,47 @@ body {
     }
     #bio {
         position: fixed;
-        bottom: 0;
+        top: 0;
         z-index: -1;
-        width: calc(100% - calc(var(--chat-width) + 45px));
+        width: calc(100% - calc(var(--chat-width) + 61px));
         right: 0;
+        transform: unset;
+        border-radius: 20px;
+        margin: 3px 8px;
+        backdrop-filter: blur(6px);
+        background-color: #1b1b1bd3;
+        justify-content: center;    
     }
-    .video-container:hover ~ #bio {top: unset}
+    #bio:hover {
+        transform: translateY(0);
+        top: unset;
+        transition-duration: var(--transition-duration);
+    }
+    
+    .video-container:hover ~ #bio {
+        top: unset;
+        transform: translateY(50px);
+        transition-duration: var(--transition-duration);
+    }
+    .video-container {height: 100vh;}
     .chnl-pp-container {top: 19%}
     #popup > label {font-size: 2.5em}
     #tools {left: calc(var(--chat-width) + 25px)}
     #bio:hover {top: unset}
     .emote {max-height: 20px;}
     .badge {max-height: 14px;}
+    .chat-rem {
+        clear: unset;
+        position: fixed;
+        z-index: 1;
+        width: var(--chat-width);
+        top: 0;
+        padding: 10px;
+        font-size: small;
+        background-color: rgb(34, 32, 34);
+        height: 100vh;
+    }
+
 }
 
 @media only screen and (min-width: 970px) {
@@ -646,6 +676,11 @@ body {
     #popup > label {font-size: 2.5em;}
     .chnl-pp-container {top: 19%;}
     #bio-desc {position: absolute;}
+    #bio-desc:before {
+        background-image: unset;
+        height: 0;
+        width:0;
+    }
 }
 
 @media only screen and (min-width: 1600px) {
