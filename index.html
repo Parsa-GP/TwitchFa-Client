@@ -15,9 +15,18 @@
 </head>
 <body>
     <div id="settings-cont">
-        <input type="range" min="0" max="359" value="264" id="set-color-hue">
-        <button id="reset-hue" onclick="resetHue()">Reset Color</button>
-        <input type="number" min="200" max="1000" value="250" id="set-chat-width">
+        <div class="flex-horiz">
+            <input type="range" min="0" max="359" value="264" id="set-color-hue">
+            <button id="set-hue-reset" onclick="resetHue()">Reset</button>
+        </div>
+        <div id="set-chatprev" class="flex-horiz">
+            <div id="set-chatprev-chat">
+                <input type="number" min="200" max="1000" value="250" id="set-chat-width">
+            </div>
+            <div id="set-chatprev-cont">
+                <div id="set-chatprev-vid">Chat Width</div>
+            </div>
+        </div>
         <button id="set-submit" onclick="setSub()">Back</button>
     </div>
 

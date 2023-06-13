@@ -36,8 +36,9 @@ Root.setProperty('--chat-width', `${cwidth}px`);
 
 chatw.onchange = function() {
     cwidth = this.value;
-    setCookie("cw", this.value)
+    setCookie("cw", cwidth)
     Root.setProperty('--chat-width', `${cwidth}px`);
+    // console.log(cwidth)
 }
 slider.oninput = function() {
     hue = this.value;
