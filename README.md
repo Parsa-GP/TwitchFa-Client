@@ -10,6 +10,7 @@ a COMPLETE frontend webapp (kinda)
 ## TODO List
 1. Get app working perfectly fine in desktop (see stream in desktop)
 2. Adding sub-gifter badge[.](https://www.google.com/search?q=sub+gifter+twitch+badge&tbm=isch#imgrc=bWzoPFdZVHiHcM)
+3. Add more emote like [BTTV](https://api.betterttv.net/3/cached/users/twitch/ID) or [FFZ](https://api.frankerfacez.com/v1/room/id/ID).
 
 ## Built with
 * JavaScript

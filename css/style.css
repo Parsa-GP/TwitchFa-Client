@@ -37,11 +37,11 @@ body {
         font-weight: 400;
         -webkit-text-stroke: 0.4px black;}  /* User */
 
-.badge {width:20px; height:20px;margin-right: 3px;}
+.badge {max-height:20px;margin-right: 3px;}
 .display-name {font-weight: bold; color: hsl(var(--ambient-color-hsl), 86%);}
 
 .emote {
-    height: 25px;
+    max-height: 25px;
     top: 3px;
     position: relative;
 }
@@ -618,7 +618,7 @@ body {
     #chat-container {
         clear: unset;
         position: relative;
-        z-index: 4;
+        z-index: 2;
         width: var(--chat-width);
         top: 0;
         font-size: small;
@@ -627,15 +627,17 @@ body {
     #bio {
         position: fixed;
         bottom: 0;
-        z-index: 5;
+        z-index: -1;
         width: calc(100% - calc(var(--chat-width) + 45px));
         right: 0;
     }
     .video-container:hover ~ #bio {top: unset}
-    .chnl-pp-container {top: 19%;}
-    #popup > label {font-size: 2.5em;}
-    #tools {left: calc(var(--chat-width) + 25px);}
+    .chnl-pp-container {top: 19%}
+    #popup > label {font-size: 2.5em}
+    #tools {left: calc(var(--chat-width) + 25px)}
     #bio:hover {top: unset}
+    .emote {max-height: 20px;}
+    .badge {max-height: 14px;}
 }
 
 @media only screen and (min-width: 970px) {

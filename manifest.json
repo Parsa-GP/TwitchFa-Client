@@ -1,0 +1,32 @@
+{
+  "background_color": "#ffffff",
+  "description": "A bridge for Iranians who are restricted to access twitch.tv.",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "TwitchFa Client",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "TwitchFa Client",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "categories": [
+    "entertainment",
+    "games",
+    "productivity"
+  ],
+  "screenshots": [],
+  "icons": [
+    {
+      "src": "img/favicon.png",
+      "type": "image/png",
+      "sizes": "145x145"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Main",
+      "url": "/",
+      "description": "main"
+    }
+  ]
+}
