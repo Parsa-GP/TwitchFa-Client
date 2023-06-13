@@ -4,6 +4,7 @@ let twitchId;
 let em_dataresponse;
 
 var slider = document.getElementById("set-color-hue");
+var chatw = document.getElementById("set-chat-width");
 var setbtn = document.getElementById("settings-btn");
 var setsub = document.getElementById("set-submit");
 var setcont = document.getElementById("settings-cont");
@@ -12,17 +13,32 @@ let Root = document.querySelector(':root').style
 
 let hue = 264;
 let saturation = 100;
+let cwidth = 250;
 
 if (document.cookie.indexOf('hue=') == -1) {
-    document.cookie = "hue=264";
-    hue = 264;
+    document.cookie = hue;
 } else {
     hue = getCookie("hue");
 }
+
+if (document.cookie.indexOf('cw=') == -1) {
+    document.cookie = cwidth;
+} else {
+    cwidth = getCookie("cw");
+}
+
 slider.value = hue
+chatw.value = cwidth
+
 Root.setProperty('--ambient-color', `hsl(${hue}, ${saturation}%, 64%)`);
 Root.setProperty('--ambient-color-hsl', `${hue}, ${saturation}%`);
+Root.setProperty('--chat-width', `${cwidth}px`);
 
+chatw.onchange = function() {
+    cwidth = this.value;
+    setCookie("cw", this.value)
+    Root.setProperty('--chat-width', `${cwidth}px`);
+}
 slider.oninput = function() {
     hue = this.value;
     setCookie("hue", this.value)

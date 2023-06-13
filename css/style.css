@@ -637,6 +637,19 @@ Settings
     padding: 5px;
 }
 
+#set-chat-width {
+    padding: 7px;
+    border-radius: 99px;
+    border: 0;
+    background-color: hsla(var(--ambient-color-hsl), 50%, .6);
+    color: hsl(var(--ambient-color-hsl), 80%);
+    box-shadow: 3px 3px 5px hsl(var(--ambient-color-hsl), 20%);
+    font-size: 1em;
+    opacity: 0.8;
+    transition-duration: var(--transition-duration);
+    outline: none;
+}
+
 #settings-cont > button {
     padding: 7px;
     border-radius: 99px;
