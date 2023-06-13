@@ -618,7 +618,7 @@ body {
     #chat-container {
         clear: unset;
         position: relative;
-        z-index: 4;
+        z-index: 3;
         width: var(--chat-width);
         top: 0;
         font-size: small;
@@ -627,7 +627,7 @@ body {
     #bio {
         position: fixed;
         bottom: 0;
-        z-index: 5;
+        z-index: -1;
         width: calc(100% - calc(var(--chat-width) + 45px));
         right: 0;
     }
