@@ -130,9 +130,7 @@ fetch(`https://tw-rly.fly.dev/streamer/${chnl}`)
         }
     }
     document.getElementById('qualityDropdown').value = def;
-    const src = document.getElementById('stream-src');
-    src.src = def;
-    stream.load();
+    playStream(def)
 })
 
 // Fetch Emote list
@@ -199,12 +197,24 @@ function bioInfo(streamer) {
 }
 
 function playStream(url) {
+    if(Hls.isSupported()) {
+      var hls = new Hls();
+      hls.loadSource(url);
+      hls.attachMedia(stream);
+      hls.on(Hls.Events.MANIFEST_PARSED,function() {
+        stream.play();
+      });
+    }
+    else if (stream.canPlayType('application/vnd.apple.mpegurl')) {
+      stream.src = url;
+      stream.addEventListener('loadedmetadata',function() {
+        stream.play();
+      });
+    }
+    /* deprecated and simpler way (w/o supporting desktop)
     src.src = url;
     stream.load();
-    /*const video = document.querySelector('video');
-    video.querySelector('source').setAttribute('src', url);
-    video.load();
-    if (video.paused) {video.play();} else {video.pause();}*/
+    */
 }
 
 /*function muteStream() {
