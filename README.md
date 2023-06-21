@@ -9,10 +9,12 @@ a COMPLETE frontend webapp (kinda)
 ## TODO List
 1. Adding sub-gifter badge[.](https://www.google.com/search?q=sub+gifter+twitch+badge&tbm=isch#imgrc=bWzoPFdZVHiHcM)
 2. Add more emote like [BTTV](https://api.betterttv.net/3/cached/users/twitch/ID) or [FFZ](https://api.frankerfacez.com/v1/room/id/ID).
+3. Fixing the stream not playing on most browsers (due to maybe [not enabling cross origin resource sharing (CORS) on github pages](https://stackoverflow.com/questions/26416727/cross-origin-resource-sharing-on-github-pages)).
 
 ## Built with
 * [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
-* [tmi.js](https://tmijs.com/)
+* [tmi.js](https://tmijs.com/) (For connect and use twitch chat webservice)
+* [hls.js](https://github.com/video-dev/hls.js) (For playing stream)
 
 
 ## Screenshots
