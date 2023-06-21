@@ -4,7 +4,7 @@
 A bridge for Iranians who are restricted to access `twitch.tv`.
 a COMPLETE frontend webapp (kinda)
 
-- The only data that is collected is a emote list that does not have an image, which can be seen by typing the code `getCookie("noemotes")`.
+- The only data that is collected is a emote list that does not have an image, which can be seen by typing the code `getCookie("noemotes")` in the console located in Inspect.
 
 ## TODO List
 1. Adding sub-gifter badge[.](https://www.google.com/search?q=sub+gifter+twitch+badge&tbm=isch#imgrc=bWzoPFdZVHiHcM)

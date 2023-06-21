@@ -828,10 +828,10 @@ Responsive
     #bio {
         position: fixed;
         top: 0;
-        z-index: -1;
+        z-index: 1;
         width: calc(100% - calc(var(--chat-width) + 61px));
         right: 0;
-        transform: unset;
+        transform: translateY(-100px);
         border-radius: 20px;
         margin: 3px 8px;
         backdrop-filter: blur(var(--backdrop-blur-bg));
@@ -845,15 +845,24 @@ Responsive
     }
     
     .video-container:hover ~ #bio {
+        transform: translateY(0);
         top: unset;
-        transform: translateY(50px);
+        transition-duration: var(--transition-duration);
+    }
+    #tools {
+        transform: translateY(-120px);
+        opacity: 0;
+        left: calc(var(--chat-width) + 25px);
+    }
+    .video-container:hover #tools {
+        transform: translateY(110px);
+        opacity: 1;
+        top: unset;
         transition-duration: var(--transition-duration);
     }
     .video-container {height: 100vh;}
     .chnl-pp-container {top: 19%}
     #popup > label {font-size: 2.5em}
-    #tools {left: calc(var(--chat-width) + 25px)}
-    #bio:hover {top: unset}
     .emote {max-height: 20px;}
     .badge {max-height: 14px;}
     .chat-rem {
