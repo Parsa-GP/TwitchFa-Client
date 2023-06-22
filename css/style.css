@@ -884,12 +884,6 @@ Responsive
     :root {--column-count: 5;}
     #popup > label {font-size: 2.5em;}
     .chnl-pp-container {top: 19%;}
-    #bio-desc {position: absolute;}
-    #bio-desc:before {
-        background-image: unset;
-        height: 0;
-        width:0;
-    }
 }
 
 @media only screen and (min-width: 1600px) {

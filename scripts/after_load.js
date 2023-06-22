@@ -198,18 +198,18 @@ function bioInfo(streamer) {
 
 function playStream(url) {
     if(Hls.isSupported()) {
-      var hls = new Hls();
-      hls.loadSource(url);
-      hls.attachMedia(stream);
-      hls.on(Hls.Events.MANIFEST_PARSED,function() {
-        stream.play();
-      });
+        var hls = new Hls();
+        hls.loadSource(url);
+        hls.attachMedia(stream);
+        hls.on(Hls.Events.MANIFEST_PARSED,function() {
+            stream.play();
+        });
     }
     else if (stream.canPlayType('application/vnd.apple.mpegurl')) {
-      stream.src = url;
-      stream.addEventListener('loadedmetadata',function() {
-        stream.play();
-      });
+        stream.src = url;
+        stream.addEventListener('loadedmetadata',function() {
+            stream.play();
+        });
     }
     /* deprecated and simpler way (w/o supporting desktop)
     src.src = url;
