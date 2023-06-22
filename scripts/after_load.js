@@ -1,5 +1,6 @@
 let isError = false;
 let err = "";
+let err_txt;
 let twitchId;
 let em_dataresponse;
 
@@ -71,7 +72,12 @@ fetch('https://api.twitchfa.com/v2/twitch/streamers?page=1&limit=100')
         const error_span = document.createElement('span');
         error_div.classList.add("error");
         error_span.classList.add("error-text");
-        error_span.innerHTML = `API ERROR`;
+        if (err_txt == null) {
+            error_span.innerHTML = `API ERROR`;  
+        } else {
+            error_span.innerHTML = err_txt;  
+        }
+    error_span.innerHTML = `API ERROR`;
         error_div.appendChild(error_span);
         document.getElementById("explore-grid").appendChild(error_div);
     }
@@ -309,5 +315,13 @@ function exploreTable() {
         })
       document.getElementById("chnl-input").placeholder = "All viewers: " + all_viewers;
       })
-      .catch(error => {console.log(error); ERR = true});
+      .catch(error => {
+        if (error == null) {
+            console.log(error);
+            ERR = true
+        } else {
+            err_txt = error;
+            ERR = true
+        }
+        });
 }

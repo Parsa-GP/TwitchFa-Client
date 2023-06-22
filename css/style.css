@@ -10,6 +10,12 @@
         opacity: 1;
     }
 }
+@keyframes alert {
+    0% {opacity: 0;}
+    8% {opacity:1}
+    92% {opacity:1;}
+    100% {opacity: 0;}
+  }
 
 :root {
     --font-family: Vazirmatn, Vazir, Arial, Helvetica, sans-serif;
@@ -59,6 +65,21 @@ body {
     animation: slideIn 250ms ease-out;
 }
 
+#alert-anim {
+    z-index: 15;
+    animation-name: alert;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    position: fixed;
+    top: 0;
+    left: 5%;
+    width: 90%;
+    background-color: #1a1a1a;
+    border: 1px solid white;
+    padding: 5px;
+    font-size: large;
+    font-family: var(--font-family);
+}
 
 /* 
 Stream

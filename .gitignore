@@ -1,3 +1,17 @@
 /img/badges/org
 output.txt
 ftt.py
+scripts/hls/hls-demo.js
+scripts/hls/hls.light.js
+scripts/hls/hls.mjs
+scripts/hls/hls.mjs.map
+scripts/hls/hls.worker.js
+scripts/hls/hls.worker.js.map
+scripts/hls/hls.js.d.ts
+scripts/hls/hls.light.js.map
+scripts/hls/hls.light.min.js
+scripts/hls/hls.light.min.js.map
+scripts/hls/hls.light.mjs
+scripts/hls/hls.light.mjs.map
+scripts/hls/hls.min.js
+scripts/hls/hls.min.js.map
