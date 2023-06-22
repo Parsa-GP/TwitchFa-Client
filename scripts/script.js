@@ -5,6 +5,8 @@ if (month == 5) {
     document.querySelector(':root').style.setProperty('--vid-bg', 'linear-gradient(90deg, #00c4ff, #005aff);');
 }
 
+emojiErr = false;
+
 let thumb_w = 1280;
 let thumb_h = 720;
 
@@ -48,8 +50,15 @@ function thumbUrl(chnl) {
 }
 
 function t2e(input) {
-    let output;
-    if (!ERR && em_dataresponse !== null) {
+    let output = input;
+    if (ERR || em_dataresponse == null || em_dataresponse["status_code"] == 404 || emojiErr) {
+        if (em_dataresponse == null) {
+            showAlert("Unfortunately, the 7tv emotes cannot shown in chat.");
+        } else {
+            showAlert(em_dataresponse["status_code"]);
+        } 
+        emojiErr = true;
+} else {
         console.log()
         const json = JSON.parse(JSON.stringify(em_dataresponse));
         const emotes = {};
@@ -59,10 +68,22 @@ function t2e(input) {
         output = input.replace(/\b(\w+)\b/g, (_match, word) =>
             emotes[word] ? `<img class="emote e-7tv" src="${emotes[word]}">` : word
         );
-
-        return output;
     }
+    return output;
     
+}
+showAlert("something")
+function showAlert(text) {
+    if (document.getElementById("alert") != null) {
+        alertDiv = document.getElementById("alert");
+        alertDiv.id = "alert-anim";
+        alertDiv.innerHTML = text;
+        setTimeout(function() {
+            alertDiv.id = "alert";
+            alertDiv.innerHTML = "";
+        }, 5200);
+    
+    }
 }
 
 function f2k(follower) {
