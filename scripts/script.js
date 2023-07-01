@@ -7,8 +7,22 @@ if (month == 5) {
 
 emojiErr = false;
 
+let emoji_data;
 let thumb_w = 1280;
 let thumb_h = 720;
+
+// Fetch Emote list
+fetch(`https://tw-rly.fly.dev/streamer/${chnl}/bio`)
+.then(response => response.json())
+.then(data => {
+    twitchId = data[0].data.user.id
+
+    ERR=false
+    fetch(`https://7tv.io/v3/users/twitch/${twitchId}`)
+        .then(response => response.json())
+        .then(data => emoji_data = data)
+        .catch(error => {console.log(error); isError = true;});
+})
 
 function notEmote(emote_name) {
     if (document.cookie.indexOf("noemotes") !== -1) {
@@ -51,16 +65,18 @@ function thumbUrl(chnl) {
 
 function t2e(input) {
     let output = input;
-    if (ERR || em_dataresponse == null || em_dataresponse["status_code"] == 404 || emojiErr) {
-        if (em_dataresponse == null) {
-            showAlert("Unfortunately, the 7tv emotes cannot shown in chat.");
-        } else {
-            showAlert(em_dataresponse["status_code"]);
-        } 
-        emojiErr = true;
+    if (emoji_data == null || emoji_data["status_code"] == 404) {
+        if (!emojiErr) {
+            if (emoji_data == null) {
+                showAlert("Unfortunately, the 7tv emotes cannot shown in chat.");
+            } else {
+                showAlert(emoji_data["status_code"]);
+            } 
+            emojiErr = true;
+        }
 } else {
         console.log()
-        const json = JSON.parse(JSON.stringify(em_dataresponse));
+        const json = JSON.parse(JSON.stringify(emoji_data));
         const emotes = {};
         json.emote_set.emotes.forEach((emote) => {
             emotes[emote.name] = `https:${emote.data.host.url}/2x.webp`;

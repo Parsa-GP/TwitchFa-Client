@@ -2,13 +2,13 @@ let isError = false;
 let err = "";
 let err_txt;
 let twitchId;
-let em_dataresponse;
 
 var slider = document.getElementById("set-color-hue");
 var chatw = document.getElementById("set-chat-width");
 var setbtn = document.getElementById("settings-btn");
 var setsub = document.getElementById("set-submit");
 var setcont = document.getElementById("settings-cont");
+var qualityDropdown = document.getElementById("qualityDropdown");
 
 let Root = document.querySelector(':root').style
 
@@ -116,7 +116,8 @@ stream.addEventListener('error', function(e) {console.error('Error during video 
 
 qualityDropdown.addEventListener("change", function() {
     const selectedUrl = qualityDropdown.value;
-    if (selectedUrl !== "") {playStream(selectedUrl)}});
+    if (selectedUrl !== "") {playStream(selectedUrl)}
+});
   
 
 fetch(`https://tw-rly.fly.dev/streamer/${chnl}`)
@@ -129,29 +130,20 @@ fetch(`https://tw-rly.fly.dev/streamer/${chnl}`)
     for (let i = 0; i < json_data.length; i++) {
         const option = document.createElement("option");
         option.value = json_data[i].url;
-        option.text = json_data[i].quality;
+        const q = json_data[i].quality
+        if (q.endsWith(" (source)")) {
+            option.text = q.slice(0, -8);
+        } else {
+            option.text = q;
+        }
         qualityDropdown.appendChild(option);
-        if (json_data[i].quality == "480p") {
+        if (q == "480p") {
             def = json_data[i].url
         }
     }
     document.getElementById('qualityDropdown').value = def;
     playStream(def)
 })
-
-// Fetch Emote list
-fetch(`https://tw-rly.fly.dev/streamer/${chnl}/bio`)
-.then(response => response.json())
-.then(data => {
-    twitchId = data[0].data.user.id
-
-    ERR=false
-    fetch(`https://7tv.io/v3/users/twitch/${twitchId}`)
-        .then(response => response.json())
-        .then(data => em_dataresponse = data)
-        .catch(error => {console.log(error); ERR = true;});
-})
-
 
 function bioInfo(streamer) {
     fetch(`https://tw-rly.fly.dev/streamer/${streamer}/bio`)
@@ -255,8 +247,20 @@ function exploreTable() {
       .then(data => {resp_data = data
         const container = document.getElementById("explore-grid");
 
+        resp_sorted = {...resp_data}
+
+        // Separate the first three least items from the rest of the items
+        let sortedLeastItems = resp_sorted.data.slice().sort((a, b) => a.uptime - b.uptime).slice(0, 2);
+        let unsortedRestOfItems = resp_sorted.data.slice();
+
+        // Combine the arrays in the correct order
+        console.log(sortedLeastItems, unsortedRestOfItems);
+        const sortedData = [...sortedLeastItems, ...unsortedRestOfItems];
+
+        const data_remDup = Array.from(new Set(sortedData));
+
         let all_viewers = 0
-        resp_data.data.forEach(item => {
+        data_remDup.forEach(item => {
             const exitem = document.createElement('a');
             exitem.href = window.location.origin + window.location.pathname + "?channel=" + item.login;
             exitem.classList.add('ex-item');
@@ -313,7 +317,7 @@ function exploreTable() {
             exitem.appendChild(btm);
             container.appendChild(exitem);
         })
-      document.getElementById("chnl-input").placeholder = "All viewers: " + all_viewers;
+      document.getElementById("title").innerHTML = `${all_viewers} Viewers, ${resp_data.data.length} Streamers`;
       })
       .catch(error => {
         if (error == null) {

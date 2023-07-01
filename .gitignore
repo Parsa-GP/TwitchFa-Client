@@ -15,3 +15,5 @@ scripts/hls/hls.light.mjs
 scripts/hls/hls.light.mjs.map
 scripts/hls/hls.min.js
 scripts/hls/hls.min.js.map
+scripts/clappr.min.js
+dropdown.html

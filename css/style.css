@@ -346,6 +346,16 @@ Explore
     display: none;  /* Safari and Chrome */
 }
 
+#explore-grid > :nth-child(-n + 2) {
+    border: 2px solid var(--ambient-color);
+    box-shadow: 0 0 10px hsla(var(--ambient-color-hsl), 10%, 0.8);
+}
+#explore-grid > :nth-child(-n + 2):hover {
+    box-shadow: 5px 5px 20px hsla(var(--ambient-color-hsl), 15%, 0.8);
+}
+#explore-grid > :nth-child(-n + 2) > .ex-thumb {
+    border: 1px solid var(--ambient-color);
+}
 
 .ex-item {
     padding: 7px;
@@ -382,23 +392,6 @@ Explore
     transform: scale(1.1)
 }
 
-
-
-/*
-Explore Items
-
-                                 ▄▄
-▀███▀▀▀███                     ▀███      ▀████▀ ██
-  ██    ▀█                       ██        ██   ██
-  ██   █  ▀██▀   ▀██▀████████▄   ██        ██ ██████  ▄▄█▀██ ▀████████▄█████▄  ▄██▀███
-  ██████    ▀██ ▄█▀   ██   ▀██   ██        ██   ██   ▄█▀   ██  ██    ██    ██  ██   ▀▀
-  ██   █  ▄   ███     ██    ██   ██        ██   ██   ██▀▀▀▀▀▀  ██    ██    ██  ▀█████▄
-  ██     ▄█ ▄█▀ ██▄   ██   ▄██   ██        ██   ██   ██▄    ▄  ██    ██    ██  █▄   ██
-▄████████████▄   ▄██▄ ██████▀  ▄████▄    ▄████▄ ▀████ ▀█████▀ ████  ████  ████ ██████▀
-                      ██
-                    ▄████▄
-
- */ 
 .ex-item > .ex-thumb {
     width: 100%;
     aspect-ratio: 16/9;
@@ -713,8 +706,11 @@ Settings
     -webkit-appearance: none;margin: 0;
 }
 
-    #set-chatprev {
+#set-chatprev {
     height: calc(100vh / 3);
+    display: none;
+    box-shadow: 4px 4px 7px #080808cf;
+    border-radius: 20px;
 }
 
 #set-chatprev-cont {
@@ -725,8 +721,7 @@ Settings
     height: 100%;
     position: relative;
     background: hsl(var(--ambient-color-hsl), 5%);
-    box-shadow: 3px 3px 5px #080808cf;
-    border-radius: 0 30px 30px 0;
+    border-radius: 0 20px 20px 0;
     border: 2px solid var(--ambient-color);
     border-left: 0;
     overflow: hidden;
@@ -830,7 +825,8 @@ Responsive
     :root {
         --column-count: 4;
         --pride-flag: linear-gradient(red 16.66%, orange 0 33.33%, yellow 0 50%, green 0 66.66%, blue 0 83.33%, indigo 0);
-    }
+    }    
+
     #stream {
         width: calc(100vw - calc(var(--chat-width) + 24px));
         right: 0;
@@ -883,9 +879,11 @@ Responsive
     }
     .video-container {height: 100vh;}
     .chnl-pp-container {top: 19%}
+    .filler {aspect-ratio: unset;height: 100vh;}
     #popup > label {font-size: 2.5em}
     .emote {max-height: 20px;}
     .badge {max-height: 14px;}
+    #set-chatprev {display: flex;}
     .chat-rem {
         clear: unset;
         position: fixed;

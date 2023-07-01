@@ -17,6 +17,7 @@ const client = new tmi.Client({
 client.connect();
 
 client.on('message', (channel, tags, message, self) => {
+    // console.log(tags["badges"])
     let messageWithEmoticons = message;
     const emotes = tags['emotes'];
     if(emotes) {
@@ -36,7 +37,12 @@ client.on('message', (channel, tags, message, self) => {
     messageContainer.classList.add('message');
     let badges = "";
     for (const k in tags["badges"]) {
-        badges += `<img src="img/badges/${k}.png" onerror="this.onerror=null;this.style.display = 'none';notEmote('${k}')" class="badge ${k}">`
+        if (k == "predictions") {
+            badge_dir = `img/badges/${k}-${tags["badges"][k]}.png`
+        } else {
+            badge_dir = `img/badges/${k}.png`
+        }
+        badges += `<img src="${badge_dir}" onerror="this.onerror=null;this.style.display = 'none';notEmote('${k}')" class="badge ${k}">`
     }
     messageContainer.innerHTML = `${badges} <span style="color:${tags['color']};" class="display-name">${tags['display-name']}: </span>${t2e(messageWithEmoticons, twitchId)}`;
 

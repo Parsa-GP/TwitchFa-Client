@@ -33,9 +33,9 @@
     </div>
 
     <form target="_self" method="get" class="chnl-pp-bg" id="popup">
-        <label>Type the Channel Name:</label>
+        <label id="title">---- Viewers, -- Streamers</label>
         <div class="chnl-pp-container">
-            <input name="channel" class="chnl-pp-input" id="chnl-input">
+            <input name="channel" class="chnl-pp-input" id="chnl-input" placeholder="channel name">
             <button type="submit" class="chnl-pp-submit"></button>
         </div>
         <img id="settings-btn" src="img/settings.svg" onclick="setBtn()">
@@ -50,7 +50,7 @@
             </div>-->
         <div id="tools">
             <button id="back-to-popup" onclick="backToPopup()">Back</button>
-            <select id="qualityDropdown"><option value="">Quality</option></select>
+            <select id="qualityDropdown"></select>
         </div>
     </div>
     <div id="bio">
